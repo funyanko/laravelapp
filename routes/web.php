@@ -44,4 +44,8 @@ Route::get('/', function () {
 //        return $html;
 //     });
 
-Route::get('jissyu', 'JissyuController@index');
+// Route::get('jissyu', 'JissyuController@index');
+
+
+Route::get('hello', 'HelloController@index');
+Route::post('hello', 'HelloController@post');

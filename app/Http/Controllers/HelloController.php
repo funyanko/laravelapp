@@ -23,15 +23,41 @@ function tag($tag, $txt) {
 class HelloController extends Controller
 {
   
-   public function index() {
-       global $head, $style, $body, $end;
+   // public function index($id='zero') {
+    //    global $head, $style, $body, $end;
       
-       $html = $head . tag('title','Hello/Index') . $style . $body
-           . tag('h1','Index') . tag('p','this is Index page')
-           . '<a href="/hello/other">go to Other page</a>'
-           . $end;
-       return $html;
-   }
+    //    $html = $head . tag('title','Hello/Index') . $style . $body
+    //        . tag('h1','Index') . tag('p','this is Index page')
+    //        . '<a href="/hello/other">go to Other page</a>'
+    //        . $end;
+    //    return $html;
+   //  $data = ['msg' => 'これはコントローラから渡されたメッセージです。', 'id'=>$id];
+   //  return view('hello.index' , $data);
+   // }        ##ルーティングでの表示
+
+   // public function index(Request $request){
+   //    $data = ['msg'=>'これはコントローラーから渡されたメッセージです。', 'id'=>$request->id];
+   //    return view('hello.index', $data);
+   // }  ##ユーザーからのアクセス
+
+// public function index(){
+//    $data = ['msg'=>'これはBladeを利用したサンプルです。'];
+//    return view('hello.index', $data);
+// } ##bladeは優先して表示される
+
+public function index(){
+   $data = ['msg'=>'お名前を入力してください。', 'pass'=>'パスワードを入力してください。'];
+   $number = ['one', 'two', 'three', 'four', 'five'];
+   return view('hello.index', $data, ['number'=>$number]);
+}
+
+public function post(Request $request){
+   $msg = $request->msg;
+   $pass = $request->pas;
+   $data = ['msg'=>'こんにちは、'.$msg.'さん！', 'pass'=> 'パスワードは'.$pass.'です。'];
+   $number = ['one', 'two', 'three', 'four', 'five'];
+   return view('hello.index', $data, ['number'=>$number]);
+}
 
    public function other() {
        global $head, $style, $body, $end;
