@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\HelloRequest;
 
 global $head, $style, $body, $end;
 $head = '<html><head>';
@@ -45,18 +46,29 @@ class HelloController extends Controller
 //    return view('hello.index', $data);
 // } ##bladeは優先して表示される
 
-public function index(){
-   $data = ['msg'=>'お名前を入力してください。', 'pass'=>'パスワードを入力してください。'];
-   $number = ['one', 'two', 'three', 'four', 'five'];
-   return view('hello.index', $data, ['number'=>$number]);
+// public function index(){
+//    $data = ['msg'=>'お名前を入力してください。', 'pass'=>'パスワードを入力してください。'];
+//    $number = ['one', 'two', 'three', 'four', 'five'];
+//    return view('hello.index', $data, ['number'=>$number]);
+// }
+public function index()
+{
+   return view('hello.index', ['message'=>'Hello!']);
 }
 
-public function post(Request $request){
-   $msg = $request->msg;
-   $pass = $request->pas;
-   $data = ['msg'=>'こんにちは、'.$msg.'さん！', 'pass'=> 'パスワードは'.$pass.'です。'];
-   $number = ['one', 'two', 'three', 'four', 'five'];
-   return view('hello.index', $data, ['number'=>$number]);
+
+// public function post(Request $request){
+//    $msg = $request->msg;
+//    $pass = $request->pas;
+//    $data = ['msg'=>'こんにちは、'.$msg.'さん！', 'pass'=> 'パスワードは'.$pass.'です。'];
+//    $number = ['one', 'two', 'three', 'four', 'five'];
+//    return view('hello.index', $data, ['number'=>$number]);
+// 
+// use App\Http\Requests\HelloRequest;　を追加しておく
+
+public function post(HelloRequest $request)
+{
+   return view('hello.index', ['msg'=>'正しく入力されました！']);
 }
 
    public function other() {

@@ -44,8 +44,15 @@ Route::get('/', function () {
 //        return $html;
 //     });
 
-// Route::get('jissyu', 'JissyuController@index');
+Route::get('jissyu', 'JissyuController@index');
 
 
 Route::get('hello', 'HelloController@index');
 Route::post('hello', 'HelloController@post');
+
+
+Route::get('jissyu3_1', 'Jissyu3_1Controller@index');
+Route::post('jissyu3_1', 'Jissyu3_1Controller@post');
+
+Route::get('jissyu3_2', 'Jissyu3_2Controller@index');
+Route::post('jissyu3_2', 'Jissyu3_2Controller@post');
